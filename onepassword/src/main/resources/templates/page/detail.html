@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>登録名</title>
+</head>
+
+<body>
+  <form th:action="@{/onepassword-logout}" method="post">
+    <input type="submit" value="ログアウト" />
+  </form>
+  <h1>登録名</h1>
+  <form th:action="@{/onepassword-menu-allregist}" method="post">
+    <input type="submit" value="一覧に戻る" />
+  </form>
+</body>
+
+</html>
