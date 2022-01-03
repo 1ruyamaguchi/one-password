@@ -1,8 +1,16 @@
 package com.example.onepassword.controller;
 
+import com.example.onepassword.dto.LoginDto;
+import com.example.onepassword.entity.UserInfo;
+import com.example.onepassword.service.LoginService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// TODO 各htmlの投げるURLがおかしい可能性あり。横着した。
 /**
  * ログイン機能のコントローラー
  * 
@@ -10,15 +18,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 
+    @Autowired
+    private LoginService loginService;
+
+    @ModelAttribute(value = "loginDto")
+    public LoginDto loginDto() {
+        return new LoginDto();
+    }
+
     /** ログイン画面 */
     @RequestMapping(value = "/onepassword")
     public String welcome() {
         return "page/login";
     }
 
-    /** メニュー画面 */
+    /** ログイン画面からメニュー画面 */
     @RequestMapping(value = "/onepassword-menu")
-    public String menu() {
+    public String menu(@ModelAttribute("loginDto") LoginDto loginDto, Model model) {
+
+        // 正式なユーザでなければログインさせない
+        // TODO エラーメッセージとか定義する
+        if (!loginService.isValidUser(loginDto)) {
+            return "page/login";
+        }
+
+        // ログイン情報取得
+        UserInfo userInfo = loginService.getLoginUser(loginDto);
+        // modelにログイン情報を格納
+        model.addAttribute("userInfo", userInfo);
+
         return "page/menu";
     }
 
