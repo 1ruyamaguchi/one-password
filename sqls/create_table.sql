@@ -11,3 +11,7 @@ target_password varchar(30) not null,
 target_information text not null,
 FOREIGN KEY (user_id) REFERENCES user_info(user_id));
 
+# テストデータ
+INSERT INTO user_info (user_name, user_password) 
+VALUES ("test", "password");
+
