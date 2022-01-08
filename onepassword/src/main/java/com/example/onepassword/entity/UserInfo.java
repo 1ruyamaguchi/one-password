@@ -9,13 +9,13 @@ import lombok.Data;
 @Data
 public class UserInfo {
 
-    /** user_id */
+    /** 管理用ID */
     private int userId;
 
-    /** user_name */
+    /** ユーザ名 */
     private String userName;
 
-    /** user_password */
+    /** システムログイン用パスワード */
     private String userPassword;
 
 }
