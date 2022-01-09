@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.example.onepassword.dto.LoginDto;
-import com.example.onepassword.dto.UserPasswordDto;
+import com.example.onepassword.dto.UserPasswordSummaryDto;
 import com.example.onepassword.entity.UserInfo;
 import com.example.onepassword.service.PasswordService;
 import com.example.onepassword.service.LoginService;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 
  */
 @Controller
-public class LoginController {
+public class OnePasswordController {
 
     @Autowired
     private LoginService loginService;
@@ -64,16 +64,20 @@ public class LoginController {
     public String allRegist(Model model, HttpSession session) {
 
         // ユーザIDに紐づいたtarget, passwordを全件取得
-        List<UserPasswordDto> userPasswordDtos = passwordService.getUserPassword((int) session.getAttribute("userId"));
+        List<UserPasswordSummaryDto> userPasswordSummaryDtos = passwordService
+                .getUserPassword((int) session.getAttribute("userId"));
         // target, passwordのリストをmodelに格納
-        model.addAttribute("userPasswordDtos", userPasswordDtos);
+        model.addAttribute("userPasswordSummaryDtos", userPasswordSummaryDtos);
 
         return "page/allRegist";
     }
 
-    /** 登録内容確認 */
+    /** 詳細確認 */
     @RequestMapping(value = "/onepassword-menu-allregist-detail")
-    public String detail() {
+    public String detail(@ModelAttribute("targetPasswordId") String targetPasswoedId) {
+
+        // 与えられたtargetPasswordIdからパスワード詳細：UserPasswordDetailDtoを呼び出す処理
+
         return "page/detail";
     }
 

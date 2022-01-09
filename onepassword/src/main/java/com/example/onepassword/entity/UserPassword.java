@@ -10,10 +10,10 @@ import lombok.Data;
 public class UserPassword {
 
     /** 管理用ID */
-    private int targetPasswordId;
+    private Integer targetPasswordId;
 
     /** ユーザID */
-    private int userId;
+    private Integer userId;
 
     /** 対象システム名 */
     private String targetName;

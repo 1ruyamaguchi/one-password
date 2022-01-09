@@ -16,20 +16,19 @@
       名前
     </th>
     <th>
-      パスワード
+      <!--空白-->
     </th>
-    <th>
-      説明
-    </th>
-    <tr th:each="userPassword : ${userPasswordDtos}">
-      <td th:text="${userPassword.targetName}"></td>
-      <td th:text="${userPassword.targetPassword}"></td>
-      <td th:text="${userPassword.targetInformation}"></td>
+    <tr th:each="userPasswordSummary : ${userPasswordSummaryDtos}">
+      <td th:text="${userPasswordSummary.targetName}">
+      </td>
+      <td>
+        <form th:action="@{/onepassword-menu-allregist-detail}" method="post">
+          <input type="hidden" name="targetPasswordId" th:value="${userPasswordSummary.targetPasswordId}">
+          <input type="submit" value="確認" />
+        </form>
+      </td>
     </tr>
   </table>
-  <form th:action="@{/onepassword-menu-allregist-detail}" method="post">
-    <input type="submit" value="確認" />
-  </form>
   <form th:action="@{/onepassword-menu}" method="post">
     <input type="submit" value="戻る" />
   </form>

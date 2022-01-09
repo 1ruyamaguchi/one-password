@@ -3,7 +3,7 @@ package com.example.onepassword.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.onepassword.dto.UserPasswordDto;
+import com.example.onepassword.dto.UserPasswordSummaryDto;
 import com.example.onepassword.entity.UserPassword;
 import com.example.onepassword.persistence.UserPasswordMapper;
 
@@ -23,22 +23,22 @@ public class PasswordService {
      * @param userId
      * @return
      */
-    public List<UserPasswordDto> getUserPassword(int userId) {
+    public List<UserPasswordSummaryDto> getUserPassword(int userId) {
 
         // 返却値を定義
-        List<UserPasswordDto> userPasswordDtos = new ArrayList<>();
+        List<UserPasswordSummaryDto> userPasswordSummaryDtos = new ArrayList<>();
 
         // DBから情報を取得
         List<UserPassword> userPasswordEntities = userPasswordMapper.selectUserPassword(userId);
 
         // 各UserPasswordエンティティを返却値のリストに格納
         for (UserPassword userPasswordEntity : userPasswordEntities) {
-            UserPasswordDto userPasswordDto = new UserPasswordDto();
-            BeanUtils.copyProperties(userPasswordEntity, userPasswordDto);
-            userPasswordDtos.add(userPasswordDto);
+            UserPasswordSummaryDto userPasswordSummaryDto = new UserPasswordSummaryDto();
+            BeanUtils.copyProperties(userPasswordEntity, userPasswordSummaryDto);
+            userPasswordSummaryDtos.add(userPasswordSummaryDto);
         }
 
-        return userPasswordDtos;
+        return userPasswordSummaryDtos;
     }
 
 }
