@@ -1,8 +1,8 @@
 package com.example.onepassword.service;
 
+import com.example.onepassword.dao.UserInfoMapper;
 import com.example.onepassword.dto.LoginDto;
 import com.example.onepassword.entity.UserInfo;
-import com.example.onepassword.persistence.UserInfoMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
