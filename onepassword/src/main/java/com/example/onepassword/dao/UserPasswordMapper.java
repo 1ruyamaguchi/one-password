@@ -1,4 +1,4 @@
-package com.example.onepassword.persistence;
+package com.example.onepassword.dao;
 
 import java.util.List;
 

@@ -3,9 +3,9 @@ package com.example.onepassword.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.onepassword.dao.UserPasswordMapper;
 import com.example.onepassword.dto.UserPasswordSummaryDto;
 import com.example.onepassword.entity.UserPassword;
-import com.example.onepassword.persistence.UserPasswordMapper;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
