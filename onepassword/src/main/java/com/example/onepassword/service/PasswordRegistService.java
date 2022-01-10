@@ -1,0 +1,40 @@
+package com.example.onepassword.service;
+
+import com.example.onepassword.dao.UserPasswordDao;
+import com.example.onepassword.dto.PasswordRegistInputDto;
+import com.example.onepassword.entity.UserPassword;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * パスワード新規登録のサービスクラス
+ * 
+ */
+@Service
+public class PasswordRegistService {
+
+    @Autowired
+    private UserPasswordDao userPasswordDao;
+
+    /**
+     * パスワードの新規登録
+     * 
+     * @param passwordRegistInputDto
+     */
+    @Transactional
+    public void insertPasswordRegist(PasswordRegistInputDto passwordRegistInputDto, String userId) {
+
+        // 登録内容を詰め込む
+        UserPassword userPassword = new UserPassword();
+        userPassword.setUserId(userId);
+        userPassword.setTargetName(passwordRegistInputDto.getTargetName());
+        userPassword.setTargetPassword(passwordRegistInputDto.getTargetPassword());
+        userPassword.setTargetInformation(passwordRegistInputDto.getTargetInformation());
+
+        // DBに登録
+        userPasswordDao.insertPasswordRegist(userPassword);
+    }
+
+}

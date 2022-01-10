@@ -16,4 +16,7 @@ public interface UserPasswordDao {
     /** 指定したtargetPasswordIdからパスワードの詳細情報を取得する */
     public UserPassword selectUserPasswordByTargetPasswordId(String targetPasswordId);
 
+    /** パスワードの新規登録 */
+    public void insertPasswordRegist(UserPassword userPassword);
+
 }

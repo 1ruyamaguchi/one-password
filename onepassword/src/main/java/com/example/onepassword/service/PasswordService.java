@@ -12,6 +12,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * パスワードの取得に関するサービスクラス
+ * 
+ */
 @Service
 public class PasswordService {
 
