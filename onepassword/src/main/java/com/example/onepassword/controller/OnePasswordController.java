@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * ログイン機能のコントローラー
+ * 認証・パスワード閲覧機能のコントローラー
  * 
  */
 @Controller
@@ -59,7 +59,7 @@ public class OnePasswordController {
         return "page/menu";
     }
 
-    /** メニュー画面から登録一覧画面 */
+    /** 登録一覧画面 */
     @RequestMapping(value = "/onepassword-menu-allregist")
     public String allRegist(Model model, HttpSession session) {
 
