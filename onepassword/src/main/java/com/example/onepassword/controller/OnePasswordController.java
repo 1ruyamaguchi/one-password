@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.example.onepassword.dto.LoginDto;
+import com.example.onepassword.dto.UserPasswordDetailDto;
 import com.example.onepassword.dto.UserPasswordSummaryDto;
 import com.example.onepassword.entity.UserInfo;
 import com.example.onepassword.service.PasswordService;
@@ -65,18 +66,28 @@ public class OnePasswordController {
 
         // ユーザIDに紐づいたtarget, passwordを全件取得
         List<UserPasswordSummaryDto> userPasswordSummaryDtos = passwordService
-                .getUserPassword((int) session.getAttribute("userId"));
+                .getUserPasswordSummaryAll((String) session.getAttribute("userId"));
         // target, passwordのリストをmodelに格納
         model.addAttribute("userPasswordSummaryDtos", userPasswordSummaryDtos);
 
         return "page/allRegist";
     }
 
+    /** 登録一覧画面からメニュー画面 */
+    @RequestMapping(value = "/onepassword-return-menu")
+    public String returnMenuFromAllRegist() {
+        return "page/menu";
+    }
+
     /** 詳細確認 */
     @RequestMapping(value = "/onepassword-menu-allregist-detail")
-    public String detail(@ModelAttribute("targetPasswordId") String targetPasswoedId) {
+    public String detail(@ModelAttribute("targetPasswordId") String targetPasswordId, Model model) {
 
         // 与えられたtargetPasswordIdからパスワード詳細：UserPasswordDetailDtoを呼び出す処理
+        UserPasswordDetailDto userPasswordDetailDto = passwordService
+                .getUserPasswordDetailByTargetPasswordId(targetPasswordId);
+        // パスワードの詳細情報をmodelに格納
+        model.addAttribute("userPasswordDetailDto", userPasswordDetailDto);
 
         return "page/detail";
     }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.onepassword.dao.UserPasswordDao;
+import com.example.onepassword.dto.UserPasswordDetailDto;
 import com.example.onepassword.dto.UserPasswordSummaryDto;
 import com.example.onepassword.entity.UserPassword;
 
@@ -23,7 +24,7 @@ public class PasswordService {
      * @param userId
      * @return
      */
-    public List<UserPasswordSummaryDto> getUserPassword(int userId) {
+    public List<UserPasswordSummaryDto> getUserPasswordSummaryAll(String userId) {
 
         // 返却値を定義
         List<UserPasswordSummaryDto> userPasswordSummaryDtos = new ArrayList<>();
@@ -39,6 +40,26 @@ public class PasswordService {
         }
 
         return userPasswordSummaryDtos;
+    }
+
+    /**
+     * パスワードIDからパスワード詳細情報を取得
+     * 
+     * @param userId
+     * @return
+     */
+    public UserPasswordDetailDto getUserPasswordDetailByTargetPasswordId(String targetPasswordId) {
+
+        // 返却値を定義
+        UserPasswordDetailDto userPasswordDetailDto = new UserPasswordDetailDto();
+
+        // DBから情報取得
+        UserPassword userPassword = userPasswordDao.selectUserPasswordByTargetPasswordId(targetPasswordId);
+
+        // DBからの情報を返却値に格納
+        BeanUtils.copyProperties(userPassword, userPasswordDetailDto);
+
+        return userPasswordDetailDto;
     }
 
 }

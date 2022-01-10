@@ -11,6 +11,24 @@
     <input type="submit" value="ログアウト" />
   </form>
   <h1>登録名</h1>
+  <table border=1>
+    <th>
+      名前
+    </th>
+    <th>
+      パスワード
+    </th>
+    <th>
+      詳細
+    </th>
+    <tr>
+      <td th:text="${userPasswordDetailDto.targetName}">
+      </td>
+      <td th:text="${userPasswordDetailDto.targetPassword}">
+      </td>
+      <td th:text="${userPasswordDetailDto.targetInformation}"></td>
+    </tr>
+  </table>
   <form th:action="@{/onepassword-menu-allregist}" method="post">
     <input type="submit" value="一覧に戻る" />
   </form>
