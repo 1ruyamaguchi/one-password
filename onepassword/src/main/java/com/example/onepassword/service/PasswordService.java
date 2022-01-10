@@ -3,7 +3,7 @@ package com.example.onepassword.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.onepassword.dao.UserPasswordMapper;
+import com.example.onepassword.dao.UserPasswordDao;
 import com.example.onepassword.dto.UserPasswordSummaryDto;
 import com.example.onepassword.entity.UserPassword;
 
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class PasswordService {
 
     @Autowired
-    private UserPasswordMapper userPasswordMapper;
+    private UserPasswordDao userPasswordDao;
 
     /**
      * 指定したユーザのtarget, passwordを全件取得
@@ -29,7 +29,7 @@ public class PasswordService {
         List<UserPasswordSummaryDto> userPasswordSummaryDtos = new ArrayList<>();
 
         // DBから情報を取得
-        List<UserPassword> userPasswordEntities = userPasswordMapper.selectUserPassword(userId);
+        List<UserPassword> userPasswordEntities = userPasswordDao.selectUserPassword(userId);
 
         // 各UserPasswordエンティティを返却値のリストに格納
         for (UserPassword userPasswordEntity : userPasswordEntities) {

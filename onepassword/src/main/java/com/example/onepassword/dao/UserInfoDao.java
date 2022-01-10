@@ -7,7 +7,7 @@ import com.example.onepassword.entity.UserInfo;
  * user_infoテーブルに関するmapper
  * 
  */
-public interface UserInfoMapper {
+public interface UserInfoDao {
 
     /** LoginDtoに一致するユーザ情報を取得する */
     public UserInfo selectUserInfo(LoginDto loginDto);
