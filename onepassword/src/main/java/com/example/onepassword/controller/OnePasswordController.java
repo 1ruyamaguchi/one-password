@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-// TODO 各htmlの投げるURLがおかしい可能性あり。横着した。
 /**
  * ログイン機能のコントローラー
  * 
