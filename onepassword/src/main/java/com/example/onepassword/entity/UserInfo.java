@@ -10,7 +10,7 @@ import lombok.Data;
 public class UserInfo {
 
     /** 管理用ID */
-    private Integer userId;
+    private String userId;
 
     /** ユーザ名 */
     private String userName;

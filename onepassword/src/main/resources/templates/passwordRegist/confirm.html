@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>パスワード登録確認</title>
+</head>
+
+<body>
+  <form th:action="@{/onepassword-logout}" method="post">
+    <input type="submit" value="ログアウト" />
+  </form>
+  <h1>パスワード登録確認</h1>
+  <form th:action="@{/onepassword-password-regist-determine}" th:object="${passwordRegistInputDto}" method="post">
+    <table>
+      <tr>
+        <td>システム名</td>
+        <td><span th:text="*{targetName}"></td>
+      </tr>
+      <tr>
+        <td>パスワード</td>
+        <td><span th:text="*{targetPassword}"></td>
+      </tr>
+      <tr>
+        <td>説明</td>
+        <td><span th:text="*{targetInformation}"></td>
+      </tr>
+    </table>
+    <input type="submit" value="確定" />
+  </form>
+  <form th:action="@{/onepassword-password-return-input}" method="post">
+    <input type="submit" value="戻る" />
+  </form>
+</body>
+
+</html>

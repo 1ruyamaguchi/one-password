@@ -1,6 +1,6 @@
 package com.example.onepassword.service;
 
-import com.example.onepassword.dao.UserInfoMapper;
+import com.example.onepassword.dao.UserInfoDao;
 import com.example.onepassword.dto.LoginDto;
 import com.example.onepassword.entity.UserInfo;
 
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
     @Autowired
-    private UserInfoMapper userInfoMapper;
+    private UserInfoDao userInfoDao;
 
     /**
      * 正当なユーザであるか判定する
@@ -29,7 +29,7 @@ public class LoginService {
         boolean gudge = false;
 
         // ユーザ情報を取得
-        UserInfo userInfo = userInfoMapper.selectUserInfo(loginDto);
+        UserInfo userInfo = userInfoDao.selectUserInfo(loginDto);
         // ユーザが存在するか判定
         if (userInfo != null) {
             gudge = true;
@@ -45,7 +45,7 @@ public class LoginService {
     public UserInfo getLoginUser(LoginDto loginDto) {
 
         // ユーザ情報を取得
-        UserInfo userInfo = userInfoMapper.selectUserInfo(loginDto);
+        UserInfo userInfo = userInfoDao.selectUserInfo(loginDto);
 
         return userInfo;
     }
