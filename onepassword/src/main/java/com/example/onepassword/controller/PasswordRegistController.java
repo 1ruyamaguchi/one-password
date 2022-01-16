@@ -8,6 +8,8 @@ import com.example.onepassword.service.PasswordRegistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -33,9 +35,13 @@ public class PasswordRegistController {
     /** パスワード新規登録画面から確認画面 */
     @RequestMapping(value = "onepassword-password-regist-confirm")
     public String passwordRegistConfirm(
-            @ModelAttribute("passwordRegistInputDto") PasswordRegistInputDto passwordRegistInputDto, Model model) {
+            @Validated @ModelAttribute("passwordRegistInputDto") PasswordRegistInputDto passwordRegistInputDto,
+            BindingResult result, Model model) {
 
-        // TODO 入力情報のバリデーション
+        // 登録内容に不備があればエラー
+        if (!passwordRegistService.isValidPasswordRegist(passwordRegistInputDto, result)) {
+            return "passwordRegist/input";
+        }
 
         // 入力された情報をモデルに格納
         model.addAttribute("passwordRegistInputDto", passwordRegistInputDto);

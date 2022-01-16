@@ -1,5 +1,7 @@
 package com.example.onepassword.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 import lombok.Data;
 
 /**
@@ -10,9 +12,11 @@ import lombok.Data;
 public class LoginDto {
 
     /** ユーザ名 */
+    @NotEmpty
     private String userName;
 
     /** パスワード */
+    @NotEmpty
     private String userPassword;
 
 }

@@ -1,6 +1,6 @@
 package com.example.onepassword.dto;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 
@@ -12,15 +12,15 @@ import lombok.Data;
 public class PasswordRegistInputDto {
 
     /** 対象システム名 */
-    @NotNull
+    @NotEmpty
     private String targetName;
 
     /** 対象システムパスワード */
-    @NotNull
+    @NotEmpty
     private String targetPassword;
 
     /** 対象システムパスワード確認用 */
-    @NotNull
+    @NotEmpty
     private String targetPasswordConfirm;
 
     /** 対象システムの説明 */

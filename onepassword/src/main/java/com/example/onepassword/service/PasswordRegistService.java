@@ -7,6 +7,7 @@ import com.example.onepassword.entity.UserPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 
 /**
  * パスワード新規登録のサービスクラス
@@ -35,6 +36,23 @@ public class PasswordRegistService {
 
         // DBに登録
         userPasswordDao.insertPasswordRegist(userPassword);
+    }
+
+    public boolean isValidPasswordRegist(PasswordRegistInputDto passwordRegistInputDto, BindingResult result) {
+
+        // 返却値
+        boolean judge = false;
+
+        // 「パスワード」と「パスワード（確認用）」が一致しなければエラー
+        if (!passwordRegistInputDto.getTargetPassword().equals(passwordRegistInputDto.getTargetPasswordConfirm())) {
+            result.reject("notequal.password.passwordconfirm");
+        }
+        // 正しい登録内容であればtrue
+        if (!result.hasErrors()) {
+            judge = true;
+        }
+
+        return judge;
     }
 
 }
