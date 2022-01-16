@@ -9,6 +9,8 @@
 <body>
   <h1>ログイン</h1>
   <form th:action="@{/onepassword-menu}" th:object="${loginDto}" method="post">
+    <!--エラーメッセージ-->
+    <p th:errors="*{all}"></p>
     <table>
       <tr>
         <td>ユーザ名</td>

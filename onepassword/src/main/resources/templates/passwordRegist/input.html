@@ -12,6 +12,8 @@
   </form>
   <h1>パスワード新規登録</h1>
   <form th:action="@{/onepassword-password-regist-confirm}" th:object="${passwordRegistInputDto}" method="post">
+    <!--エラーメッセージ-->
+    <p th:errors="*{all}"></p>
     <table>
       <tr>
         <td>システム名</td>
