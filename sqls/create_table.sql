@@ -1,3 +1,7 @@
+# DB作成
+CREATE DATABASE onepassword;
+
+# テーブル作成
 CREATE TABLE user_info(
 user_id int primary key auto_increment,
 user_name varchar(10) not null,
