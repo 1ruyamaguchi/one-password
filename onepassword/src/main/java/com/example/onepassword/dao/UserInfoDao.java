@@ -17,7 +17,10 @@ public class UserInfoDao {
     @Autowired
     private UserInfoMapper userInfoMapper;
 
-    /** LoginDtoに一致するユーザ情報を取得する */
+    /**
+     * LoginDtoに一致するユーザ情報を取得する
+     * 
+     */
     public UserInfo selectUserInfo(LoginDto loginDto) {
         return userInfoMapper.selectUserInfo(loginDto);
     }

@@ -12,7 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserInfoMapper {
 
-    /** LoginDtoに一致するユーザ情報を取得する */
+    /**
+     * LoginDtoに一致するユーザ情報を取得する
+     * 
+     */
     UserInfo selectUserInfo(LoginDto loginDto);
 
 }
