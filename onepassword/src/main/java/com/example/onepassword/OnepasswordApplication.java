@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.example.onepassword.dao")
+@MapperScan(basePackages = "com.example.onepassword.mapper")
 public class OnepasswordApplication {
 
 	public static void main(String[] args) {
