@@ -13,13 +13,22 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserPasswordMapper {
 
-    /** 指定したuserIdのUserPasswordを全件取得する */
+    /**
+     * 指定したuserIdのUserPasswordを全件取得する
+     * 
+     */
     List<UserPassword> selectUserPassword(String userId);
 
-    /** 指定したtargetPasswordIdからパスワードの詳細情報を取得する */
+    /**
+     * 指定したtargetPasswordIdからパスワードの詳細情報を取得する
+     * 
+     */
     UserPassword selectUserPasswordByTargetPasswordId(String targetPasswordId);
 
-    /** パスワードの新規登録 */
+    /**
+     * パスワードの新規登録
+     * 
+     */
     void insertPasswordRegist(UserPassword userPassword);
 
 }

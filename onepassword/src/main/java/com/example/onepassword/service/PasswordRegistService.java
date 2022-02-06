@@ -38,6 +38,13 @@ public class PasswordRegistService {
         userPasswordDao.insertPasswordRegist(userPassword);
     }
 
+    /**
+     * 正しいパスワードか判定
+     * 
+     * @param passwordRegistInputDto
+     * @param result
+     * @return
+     */
     public boolean isValidPasswordRegist(PasswordRegistInputDto passwordRegistInputDto, BindingResult result) {
 
         // 返却値
